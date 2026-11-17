@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import { useAppStore } from '../StoreContext'
 import { Callout, Card, Reveal, Section } from './ui'
 
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/11Bj1G0nihP82ulaf9u6owj3OtICYCo4dx4pV49gRG48/edit'
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1EFf3vTRHU52ZdoaPredoVs5OOGwAT7nnEZgt7DlGVuw/edit'
+const SHEET_ACCOUNT = 'magmafyogp@gmail.com'
 
 const STEPS = [
   {
     t: 'افتح الشيت',
-    d: 'الشيت متعمول ومستنّيك: «Magmafy — قاعدة بيانات تحليل النيش» في جوجل درايف بتاعك.',
+    d: `الشيت متعمول ومستنّيك: «Magmafy — قاعدة بيانات تحليل النيش» على درايف ${SHEET_ACCOUNT}. لازم تكون مسجّل دخول بالحساب ده.`,
     link: SHEET_URL,
     linkLabel: 'افتح الشيت'
   },
@@ -23,7 +24,7 @@ const STEPS = [
   },
   {
     t: 'انشر كتطبيق ويب',
-    d: 'Deploy ← New deployment ← اختار النوع Web app. في خانة Execute as اختار Me، وفي خانة Who has access اختار Anyone. اضغط Deploy ووافق على الصلاحيات.'
+    d: `Deploy ← New deployment ← اختار النوع Web app. في خانة Execute as اختار Me، وفي خانة Who has access اختار Anyone. اضغط Deploy ووافق على الصلاحيات. لازم تكون داخل بحساب ${SHEET_ACCOUNT} وإنت بتعمل الخطوة دي.`
   },
   {
     t: 'انسخ الرابط والصقه تحت',

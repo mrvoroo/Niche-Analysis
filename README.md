@@ -20,13 +20,15 @@
 
 **التركيب مرة واحدة:**
 
-1. افتح شيت **«Magmafy — قاعدة بيانات تحليل النيش»** في جوجل درايف
+1. افتح شيت **[«Magmafy — قاعدة بيانات تحليل النيش»](https://docs.google.com/spreadsheets/d/1EFf3vTRHU52ZdoaPredoVs5OOGwAT7nnEZgt7DlGVuw/edit)** على درايف `magmafyogp@gmail.com`
 2. Extensions ← Apps Script
 3. امسح الكود الموجود والصق [`apps-script/Code.gs`](apps-script/Code.gs) واحفظ
 4. Deploy ← New deployment ← النوع **Web app**
    - Execute as: **Me**
    - Who has access: **Anyone**
 5. انسخ الرابط (بينتهي بـ `/exec`) وحطه في تبويب الإعدادات في الموقع
+
+> كل الخطوات دي لازم تتعمل وإنت داخل بحساب `magmafyogp@gmail.com`، لأن الـ deploy بيشتغل بصلاحيات الحساب اللي عمله.
 
 الشيت بيتعبّى تلقائياً بأربع تبويبات: البيانات (JSON)، أوراق التخصص، قائمة التنفيذ، وسجل التعديلات.
 
