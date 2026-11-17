@@ -1,0 +1,30 @@
+{
+  "name": "magmafy-niche-analysis",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "تحليل نيش الأثاث والديكور لماجمافاي — موقع تفاعلي بإحصائيات ورسوم بيانية وقائمة تنفيذ",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrvoroo/Niche-Analysis.git"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21"
+  },
+  "dependencies": {
+    "@propeldata/ui-kit": "0.15.1",
+    "graphql": "^16.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
