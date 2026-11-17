@@ -6,6 +6,7 @@
   "description": "تحليل نيش الأثاث والديكور لماجمافاي — موقع تفاعلي بإحصائيات ورسوم بيانية وقائمة تنفيذ",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/clean.mjs",
     "build": "vite build",
     "preview": "vite preview --port 4173"
   },
@@ -18,6 +19,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.7.0",
+    "puppeteer-core": "^23.11.1",
     "typescript": "^5.9.3",
     "vite": "^5.4.21"
   },
