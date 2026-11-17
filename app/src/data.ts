@@ -34,6 +34,11 @@ export const SOURCES: Source[] = [
   { key: 'infobel', title: 'إنفوبل — شركات الأثاث المسجلة في السعودية', url: 'https://www.infobelpro.com/companies/saudi-arabia/furniture' },
   { key: 'dfs-ar', title: 'دراسة حالة DFS — أثر العرض ثلاثي الأبعاد والواقع المعزز', url: 'https://www.casestudies.com/company/vertebrae/case-study/augmented-reality-inspires-purchasing-confidence-in-dfs-shoppers' },
   { key: 'snooze-ar', title: 'دراسة حالة Snooze — زيادة التحويل بالعرض ثلاثي الأبعاد', url: 'https://www.plattar.com/case-study/snooze/' },
+  { key: 'mordor-interior', title: 'موردور إنتليجنس — سوق التصميم الداخلي السعودي 2026–2031', url: 'https://www.mordorintelligence.com/industry-reports/saudi-arabia-interior-design-market' },
+  { key: 'fitout', title: 'ريسيرش آند ماركتس — سوق التجهيز الداخلي السعودي حتى 2030', url: 'https://www.businesswire.com/news/home/20251010079420/en' },
+  { key: 'imarc-kitchen', title: 'آي مارك — سوق أثاث المطابخ السعودي 2026–2034', url: 'https://www.imarcgroup.com/saudi-arabia-kitchen-furniture-market' },
+  { key: 'emr-cabinets', title: 'إكسبرت ماركت ريسيرش — سوق خزائن المطابخ السعودي 2026–2035', url: 'https://www.expertmarketresearch.com/reports/saudi-arabia-kitchen-cabinets-market' },
+  { key: 'mordor-kitchen', title: 'موردور إنتليجنس — سوق أثاث المطابخ السعودي', url: 'https://www.researchandmarkets.com/report/saudi-arabia-kitchen-furniture-market' },
   { key: 'saudipedia', title: 'السعوديبيديا — صناعة الأثاث في السعودية', url: 'https://saudipedia.com/en/furniture-manufacturing-in-saudi-arabia' }
 ]
 

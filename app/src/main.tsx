@@ -16,6 +16,16 @@ const brandTokens: React.CSSProperties = {
   '--propel-font-family': "'Tajawal', 'Inter', system-ui, sans-serif"
 }
 
+/* تسجيل الـ Service Worker عشان التطبيق يفتح أوفلاين وينفع يتثبّت على الموبايل */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swUrl = new URL('sw.js', document.baseURI).href
+    navigator.serviceWorker.register(swUrl).catch(() => {
+      /* التسجيل ممكن يفشل في وضع التصفح الخفي — التطبيق بيفضل شغّال عادي */
+    })
+  })
+}
+
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider

@@ -1,51 +1,17 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { ALL_TASK_IDS, TASK_GROUPS } from '../data'
+import { useAppStore } from '../StoreContext'
 import { Callout, Check, Reveal, Section } from './ui'
-
-const STORE_KEY = 'magmafy-niche-tasks-v1'
-
-function load(): Record<string, boolean> {
-  try {
-    const raw = localStorage.getItem(STORE_KEY)
-    return raw ? (JSON.parse(raw) as Record<string, boolean>) : {}
-  } catch {
-    return {}
-  }
-}
-
-function save(state: Record<string, boolean>) {
-  try {
-    localStorage.setItem(STORE_KEY, JSON.stringify(state))
-  } catch {
-    /* التخزين ممكن يكون مقفول — نكمّل بدون حفظ */
-  }
-}
 
 const priorityPill = (p: string) => (p === 'عاجل' ? 'pill--bad' : p === 'مهم' ? 'pill--warn' : 'pill--info')
 const effortPill = (e: string) => (e === 'سريع' ? 'pill--good' : e === 'متوسط' ? 'pill--warn' : 'pill--bad')
 
 export default function Checklist() {
-  const [done, setDone] = useState<Record<string, boolean>>({})
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    setDone(load())
-    setReady(true)
-  }, [])
-
-  useEffect(() => {
-    if (ready) save(done)
-  }, [done, ready])
+  const { tasks, toggleTask, resetTasks, syncState } = useAppStore()
 
   const total = ALL_TASK_IDS.length
-  const count = useMemo(() => ALL_TASK_IDS.filter((id) => done[id]).length, [done])
+  const count = useMemo(() => ALL_TASK_IDS.filter((id) => tasks[id]).length, [tasks])
   const pct = total ? Math.round((count / total) * 100) : 0
-
-  const toggle = (id: string) => setDone((prev) => ({ ...prev, [id]: !prev[id] }))
-
-  const resetAll = () => {
-    if (confirm('تمسح كل العلامات وتبدأ من جديد؟')) setDone({})
-  }
 
   return (
     <Section
@@ -53,7 +19,7 @@ export default function Checklist() {
       alt
       eyebrow="التنفيذ"
       title="قائمة التعديلات — علّم على كل ما تخلّص"
-      lead="مرتّبة بالأولوية مش بالمجهود. العلامات محفوظة في المتصفح بتاعك، فلو قفلت الصفحة ورجعت هتلاقيها زي ما سيبتها."
+      lead="مرتّبة بالأولوية مش بالمجهود. العلامات محفوظة على طول، ولو ربطت جوجل شيت من صفحة الإعدادات هتتحفظ برّه المتصفح كمان."
     >
       <Reveal>
         <div className="card">
@@ -67,13 +33,20 @@ export default function Checklist() {
             <span style={{ fontSize: '.88rem', color: 'var(--c-muted)' }}>
               {pct === 100 ? 'خلّصنا كل حاجة 🎉' : `${pct}% من القائمة`}
             </span>
-            <button className="btn btn--ghost btn--sm" onClick={resetAll} type="button">
+            {syncState === 'ok' && <span className="pill pill--good">محفوظ في جوجل شيت</span>}
+            <button
+              className="btn btn--ghost btn--sm"
+              type="button"
+              onClick={() => {
+                if (confirm('تمسح كل العلامات وتبدأ من جديد؟')) resetTasks()
+              }}
+            >
               تصفير
             </button>
           </div>
 
           {TASK_GROUPS.map((g) => {
-            const gDone = g.tasks.filter((t) => done[t.id]).length
+            const gDone = g.tasks.filter((t) => tasks[t.id]).length
             return (
               <div className="task-group" key={g.id}>
                 <div className="task-group__head">
@@ -92,10 +65,10 @@ export default function Checklist() {
                 </div>
 
                 {g.tasks.map((t) => {
-                  const isDone = !!done[t.id]
+                  const isDone = !!tasks[t.id]
                   return (
                     <label className={`task${isDone ? ' is-done' : ''}`} key={t.id}>
-                      <input type="checkbox" checked={isDone} onChange={() => toggle(t.id)} />
+                      <input type="checkbox" checked={isDone} onChange={() => toggleTask(t.id)} />
                       <span className="task__box" aria-hidden="true">
                         <Check />
                       </span>
